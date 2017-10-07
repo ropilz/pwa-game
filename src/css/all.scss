@@ -1,0 +1,98 @@
+body {
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: black;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.use-tool-logo {
+  position: absolute;
+  z-index: 910;
+  width: 300px;
+  top: 154px;
+  left: 250px;
+}
+
+.use-tool-url {
+  position: absolute;
+  z-index: 910;
+  top: 442px;
+  width: 100%;
+  text-align: center;
+  font-family: Calibri;
+  font-size: 30pt;
+  color: #939;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 800px;
+  z-index: 400;
+}
+
+.game-hide {
+  position: absolute;
+  z-index: 900;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 31%,rgba(255,255,255,1) 69%,rgba(255,255,255,0) 100%);
+  top: 112px;
+  bottom: 45px;
+  left: 800px;
+  width: 2408px;
+}
+
+.wrapper {
+  width: 800px;
+  height: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(var(--scale));
+  overflow: hidden;
+
+  h1.main {
+    font-family: Calibri;
+    font-size: 32pt;
+    text-align: center;
+    background: #324;
+    color: white;
+    box-shadow: 1px 1px 10px #666;
+    margin: 0;
+    padding: 19px 0;
+    z-index: 800;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  h2.main {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16pt;
+    text-align: center;
+    margin-top: -30px;
+    color: white;
+    font-weight: 100;
+    z-index: 800;
+    position: absolute;
+    top: 88px;
+    left: 0;
+    right: 0;
+  }
+
+  .game {
+    z-index: 801;
+  }
+}

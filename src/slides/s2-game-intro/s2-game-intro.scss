@@ -1,0 +1,29 @@
+.slide-background {
+  background-color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  p.handwrited {
+    font-family: 'Open Sans', cursive;
+  }
+  .pwa-frame {
+    position: absolute;
+    border: 3px solid #5A21C5;
+    text-align: center;
+    .pwa-logo {
+      height: auto;
+      position: relative;
+      top: 336px;
+      width: 120px;
+    }
+    .pwa-detail {
+      position: relative;
+      top: 305px;
+      font-family: 'Open sans';
+      font-size: 22pt;
+    }
+  }
+}

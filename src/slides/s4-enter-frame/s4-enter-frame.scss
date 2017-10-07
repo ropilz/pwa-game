@@ -1,0 +1,67 @@
+.event-pulse {
+  position: absolute;
+  top: 359px;
+  left: 50px;
+  width: 14px;
+  height: 14px;
+  background-color: #f84;
+  border-radius: 13px;
+  z-index: 100;
+
+  .event-pulse-inner {
+    position: absolute;
+    background-color: #f84;
+    border-radius: 100px;
+    width: 14px;
+    height: 14px;
+    opacity: 0;
+  }
+}
+
+.event-transmition-1,
+.event-transmition-2,
+.event-transmition-3 {
+  position: absolute;
+  top: 365px;
+  height: 3px;
+  width: 0;
+  z-index: 99;
+  background-color: #7cF;
+}
+.event-transmition-1 { left: 48px; }
+.event-transmition-2 { left: 254px; }
+.event-transmition-3 { left: 421px; }
+
+.event-cog {
+  position: absolute;
+  top: 357px;
+  width: 20px;
+  height: 20px;
+  left: 406px;
+  z-index: 100;
+}
+
+.rxjs-logo {
+  position: absolute;
+  top: 330px;
+  width: 70px;
+  height: 70px;
+  left: 184px;
+  z-index: 100;
+}
+
+h3.action {
+  position: absolute;
+  top: 106px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: 'Open Sans';
+  font-size: 22pt;
+}
+
+p.event-label {
+  position: absolute;
+  font-family: 'Open Sans';
+  font-size: 12pt;
+}

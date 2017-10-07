@@ -31,7 +31,7 @@ export class Game {
   loadAssets() {
     return new Promise(resolve => {
       this._loader = new Loader();
-      assets.forEach(({name, url, url2x}) => this._loader.add(name, url));
+      assets.forEach(({name, url}) => this._loader.add(name, url));
       this._loader.load()
         .subscribe(
           progress => {},
@@ -50,6 +50,10 @@ export class Game {
 
   resume () {
     this.loop.unpause();
+  }
+
+  disableJump () {
+    this.bunny.disableJump();
   }
 
   step () {

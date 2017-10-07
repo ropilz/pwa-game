@@ -1,7 +1,7 @@
 import {Game} from '../../game/game';
 import {SlideData} from '../slide-data';
 
-const tools: any[] = [];
+let tools: any[] = [];
 let toolCount = 0;
 
 function newTool(image: string, label: string, wrapper: Element) {
@@ -47,6 +47,8 @@ function hideTools(wrapper: Element) {
       wrapper.removeChild(tool);
     }
   }
+  tools = [];
+  toolCount = 0;
 }
 
 export const steps3 = [
@@ -82,6 +84,24 @@ export const steps3 = [
   },
   async (data: SlideData) => {
     hideTools(data.wrapper);
+    data.setTitle('Bibliotecas')
+  },
+  async (data: SlideData) => {
+    toolCount = 1;
+    await newTool(
+      '/assets/rxjs-logo.png',
+      'Reactive Extensions (RxJs)',
+      data.wrapper);
+  },
+  async (data: SlideData) => {
+    await newTool(
+      '/assets/pixijs-logo.png',
+      'Pixi.js',
+      data.wrapper);
+  },
+  async (data: SlideData) => {
+    hideTools(data.wrapper);
     await data.showTool('/assets/glitch-logo.svg', 'https://glitch.com/edit/#!/runny')
   }
+
 ]

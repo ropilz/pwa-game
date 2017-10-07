@@ -17,6 +17,7 @@ export class Character {
   speed: number;
   jumping: boolean;
   ySpeed: number;
+  jumpDisabled = false;
 
   get position() {
     return this.view.position;
@@ -32,6 +33,14 @@ export class Character {
 
   show() {
     this.view.alpha = 1;
+  }
+
+  disableJump() {
+    this.jumpDisabled = true;
+  }
+
+  enableJump() {
+    this.jumpDisabled = false;
   }
 
   constructor (game: Game) {
@@ -89,7 +98,7 @@ export class Character {
   }
 
   jump () {
-    if (this.jumping) { return; }
+    if (this.jumping || this.jumpDisabled) { return; }
     this.jumping = true;
     this.ySpeed = conf.jumpSpeed;
   }

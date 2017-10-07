@@ -181,6 +181,17 @@ export async function install () {
     makeGameFullScreen, resetGamePosition, moveGameTo, showTool, hideTool
   }
   let blocked = false;
+  document.addEventListener('keydown', async ({keyCode}) => {
+    if (keyCode === 39) {
+      if (blocked) { return }
+      blocked = true;
+      if (step < steps.length) {
+        await steps[step](data);
+        blocked = false;
+        step += 1;
+      }
+    }
+  });
   document.body.addEventListener('click', async () => {
     // document.body.webkitRequestFullscreen();
     if (blocked) { return }

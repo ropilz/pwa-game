@@ -35,7 +35,7 @@ function createActionText(wrapper) {
 }
 
 function createLabel(x, y, text, wrapper) {
-  const label = document.createElement('p');
+  const label = document.createElement('pre');
   label.classList.add('event-label');
   label.style.top = `${y}px`;
   label.style.left = `${x}px`;
@@ -47,7 +47,7 @@ function createLabel(x, y, text, wrapper) {
 function createEventSignal(wrapper) {
   event = document.createElement('div')
   event.classList.add('event-pulse')
-  createLabel(34, 365, 'Evento', wrapper);
+  createLabel(34, 365, 'Nuevo\nFrame', wrapper);
   for (let i = 1; i <= 4; i += 1) {
     let eventChild = document.createElement('div')
     eventChild.classList.add('event-pulse-inner')
@@ -66,6 +66,7 @@ function createEventSignal(wrapper) {
     wrapper.appendChild(trans);
     transmition2.push(trans);
   }
+
   for (let i = 0; i < 3; i += 1) {
     const trans = document.createElement('div')
     trans.classList.add('event-transmition-3')
@@ -73,6 +74,7 @@ function createEventSignal(wrapper) {
     wrapper.appendChild(trans);
     transmition3.push(trans);
   }
+
   for (let i = 0; i < 3; i += 1) {
     const worker = new Image();
     worker.src = '/assets/cog.png';
@@ -81,6 +83,12 @@ function createEventSignal(wrapper) {
     wrapper.appendChild(worker);
     workers.push(worker);
   }
+  transmition2[0].style.display = 'none';
+  transmition2[2].style.display = 'none';
+  transmition3[0].style.display = 'none';
+  transmition3[2].style.display = 'none';
+  workers[0].style.display = 'none';
+  workers[2].style.display = 'none';
   createLabel(391, 406, 'Código', wrapper);
   createLabel(584, 465, 'Juego', wrapper);
   rxjsLogo = new Image();
@@ -181,6 +189,8 @@ export const steps4 = [
     data.hideTool();
     data.setTitle('Observables')
     data.setSubtitle('')
+    data.game.disableJump();
+    data.game.highlightCharacter();
   },
   async (data: SlideData) => {
     data.setSubtitle('requestAnimationFrame');
@@ -218,7 +228,40 @@ export const steps4 = [
     actionTitle.textContent = 'Presiona una tecla para intentarlo';
     let blocked = false;
     await new Promise(resolve => {
-      keyboardEventHandler = async () => {
+      keyboardEventHandler = async ({keyCode}) => {
+        if (keyCode === 39) { return }
+        if (blocked) return;
+        blocked = true;
+        await animateSignal()
+        blocked = false;
+        await animateSignal2()
+        await animateSignal3()
+        data.game.step()
+        resolve()
+      }
+      document.addEventListener('keydown', keyboardEventHandler)
+    })
+  },
+  async (data: SlideData) => {
+    document.removeEventListener('keydown', keyboardEventHandler)
+    actionTitle.textContent = 'Usamos RxJs para todo el juego';
+    data.game.showAll();
+    transmition2[0].style.display = 'block';
+    transmition2[2].style.display = 'block';
+    transmition3[0].style.display = 'block';
+    transmition3[2].style.display = 'block';
+    workers[0].style.display = 'block';
+    workers[2].style.display = 'block';
+    await animateSignal()
+    await animateSignal2()
+    await animateSignal3()
+  },
+  async (data: SlideData) => {
+    actionTitle.textContent = 'Presiona una tecla para intentarlo';
+    let blocked = false;
+    await new Promise(resolve => {
+      keyboardEventHandler = async ({keyCode}) => {
+        if (keyCode === 39) { return }
         if (blocked) return;
         blocked = true;
         await animateSignal()
@@ -241,9 +284,7 @@ export const steps4 = [
   },
   async (data: SlideData) => {
     data.hideGame();
-  },
-  async (data: SlideData) => {
-    data.showGame();
+    data.showTool('/assets/glitch-logo.svg', '')
   },
 
 

@@ -60,25 +60,25 @@ export const steps3 = [
   },
   async (data: SlideData) => {
     await newTool(
-      '/assets/chrome-logo.svg',
+      './assets/chrome-logo.svg',
       'Chrome - Versión 61 ó superior',
       data.wrapper);
   },
   async (data: SlideData) => {
     await newTool(
-      '/assets/glitch-logo.svg',
+      './assets/glitch-logo.svg',
       'Glitch - Desarrollo colaborativo en línea',
       data.wrapper);
   },
   async (data: SlideData) => {
     await newTool(
-      '/assets/piskelapp-logo.png',
+      './assets/piskelapp-logo.png',
       'Piskel - Crea y edita Pixel Art',
       data.wrapper);
   },
   async (data: SlideData) => {
     await newTool(
-      '/assets/aastudio-logo.png',
+      './assets/aastudio-logo.png',
       'AndroidAssetStudio',
       data.wrapper);
   },
@@ -89,19 +89,19 @@ export const steps3 = [
   async (data: SlideData) => {
     toolCount = 1;
     await newTool(
-      '/assets/rxjs-logo.png',
+      './assets/rxjs-logo.png',
       'Reactive Extensions (RxJs)',
       data.wrapper);
   },
   async (data: SlideData) => {
     await newTool(
-      '/assets/pixijs-logo.png',
+      './assets/pixijs-logo.png',
       'Pixi.js',
       data.wrapper);
   },
   async (data: SlideData) => {
     hideTools(data.wrapper);
-    await data.showTool('/assets/glitch-logo.svg', 'https://glitch.com/edit/#!/runny')
+    await data.showTool('./assets/glitch-logo.svg', 'https://glitch.com/edit/#!/runny')
   }
 
 ]

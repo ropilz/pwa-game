@@ -41,7 +41,7 @@ function createHelpers() {
   const wrapper = document.querySelector('.wrapper')
   footer = new Image();
   footer.classList.add('footer');
-  footer.src = '/assets/footer.jpg';
+  footer.src = './assets/footer.jpg';
   hider = document.createElement('div')
   hider.classList.add('game-hide')
   toolLogo = new Image();

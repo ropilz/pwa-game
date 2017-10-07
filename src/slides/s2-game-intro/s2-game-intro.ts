@@ -38,7 +38,7 @@ function createPWAFrame() {
   pwaFrame.style.top = '137px';
   pwaFrame.style.left = '187px';
   const pwaImage = new Image();
-  pwaImage.src = '/assets/pwa-logo.png';
+  pwaImage.src = './assets/pwa-logo.png';
   pwaImage.classList.add('pwa-logo');
   pwaFrame.appendChild(pwaImage);
   const detail = document.createElement('p');

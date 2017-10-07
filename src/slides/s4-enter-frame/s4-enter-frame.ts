@@ -77,7 +77,7 @@ function createEventSignal(wrapper) {
 
   for (let i = 0; i < 3; i += 1) {
     const worker = new Image();
-    worker.src = '/assets/cog.png';
+    worker.src = './assets/cog.png';
     worker.classList.add('event-cog')
     worker.style.marginTop = `${-30 + 30 * i}px`;
     wrapper.appendChild(worker);
@@ -93,7 +93,7 @@ function createEventSignal(wrapper) {
   createLabel(584, 465, 'Juego', wrapper);
   rxjsLogo = new Image();
   rxjsLogo.classList.add('rxjs-logo');
-  rxjsLogo.src = '/assets/rxjs-logo.png';
+  rxjsLogo.src = './assets/rxjs-logo.png';
   wrapper.appendChild(event);
   wrapper.appendChild(transmition);
   wrapper.appendChild(rxjsLogo);
@@ -284,7 +284,7 @@ export const steps4 = [
   },
   async (data: SlideData) => {
     data.hideGame();
-    data.showTool('/assets/glitch-logo.svg', '')
+    data.showTool('./assets/glitch-logo.svg', '')
   },
 
 

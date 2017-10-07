@@ -53,6 +53,7 @@ export const steps2 = [
   // Show fullscreen game
   async (data: SlideData) => {
     await show()
+    data.wrapper.removeChild(document.getElementsByClassName('s1-title')[0])
     slide = document.createElement('div')
     slide.classList.add('slide-background')
     data.showGame();

@@ -32,7 +32,13 @@ function createTitle() {
   title = document.createElement('h1');
   title.classList.add('main');
   subtitle = document.createElement('h2');
-  subtitle.classList.add('main');
+  subtitle.classList.add('main');;
+  wrapper.appendChild(title);
+  wrapper.appendChild(subtitle);
+}
+
+function createHelpers() {
+  const wrapper = document.querySelector('.wrapper')
   footer = new Image();
   footer.classList.add('footer');
   footer.src = '/assets/footer.jpg';
@@ -46,8 +52,6 @@ function createTitle() {
   wrapper.appendChild(toolLogo);
   wrapper.appendChild(hider);
   wrapper.appendChild(footer);
-  wrapper.appendChild(title);
-  wrapper.appendChild(subtitle);
 }
 
 function showTool(imageUrl: string, url: string) {
@@ -153,10 +157,12 @@ function loadGame() {
 }
 
 function setTitle(text: string) {
+  if (title === null) {createTitle() }
   title.textContent = text;
 }
 
 function setSubtitle(text: string) {
+  if (subtitle === null) {createTitle() }
   subtitle.textContent = text;
 }
 
@@ -165,7 +171,7 @@ export async function install () {
   const wrapper = document.querySelector('.wrapper')
   initBackground(wrapper)
   updateScale();
-  createTitle();
+  createHelpers();
   game = new Game();
   await game.loadAssets();
   loadGame();

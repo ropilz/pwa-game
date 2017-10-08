@@ -5,6 +5,7 @@ import {steps2} from '../slides/s2-game-intro/s2-game-intro';
 import {steps3} from '../slides/s3-tools/s3-tools';
 import {steps4} from '../slides/s4-enter-frame/s4-enter-frame';
 import {steps5} from '../slides/s5-keyboard-event/s5-keyboard-event';
+import {steps8} from '../slides/s8-final-slides/s8-final-slides';
 
 import {Game} from '../game/game';
 
@@ -14,6 +15,7 @@ const steps = [
   ...steps3,
   ...steps4,
   ...steps5,
+  ...steps8,
 ]
 
 function updateScale () {
@@ -91,6 +93,11 @@ function hideTool() {
     new Promise(resolve => animUrl.onfinish = resolve),
     showGame()
   ])
+}
+
+function removeGame() {
+  const wrapper = document.querySelector('.wrapper')
+  wrapper.removeChild(game.view);
 }
 
 function hideGame() {
@@ -180,6 +187,8 @@ export async function install () {
     './assets/cog.png',
     './assets/footer.jpg',
     './assets/glitch-logo.svg',
+    './assets/image3.jpg',
+    './assets/image4.jpg',
     './assets/piskelapp-logo.png',
     './assets/pixijs-logo.png',
     './assets/pwa-logo.png',
@@ -198,7 +207,8 @@ export async function install () {
   let step = 0;
   const data = {
     game, setTitle, setSubtitle, wrapper, showGame, hideGame,
-    makeGameFullScreen, resetGamePosition, moveGameTo, showTool, hideTool
+    makeGameFullScreen, resetGamePosition, moveGameTo, showTool, hideTool,
+    removeGame
   }
   let blocked = false;
 

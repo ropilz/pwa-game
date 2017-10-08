@@ -5,6 +5,7 @@ export type SlideData = {
   setSubtitle(string): void,
   showGame(): void,
   hideGame(): void,
+  removeGame(): void,
   showTool(imageUrl: string, ur: string): void,
   hideTool(): void,
   game: Game,

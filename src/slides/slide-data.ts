@@ -3,7 +3,7 @@ import {Game} from '../game/game';
 export type SlideData = {
   setTitle(string): void,
   setSubtitle(string): void,
-  showGame(): void,
+  showGame(skipAnimation?): void,
   hideGame(): void,
   removeGame(): void,
   showTool(imageUrl: string, ur: string): void,

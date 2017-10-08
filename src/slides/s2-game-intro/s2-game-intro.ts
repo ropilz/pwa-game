@@ -56,7 +56,7 @@ export const steps2 = [
     data.wrapper.removeChild(document.getElementsByClassName('s1-title')[0])
     slide = document.createElement('div')
     slide.classList.add('slide-background')
-    data.showGame();
+    data.showGame(true);
     data.wrapper.appendChild(slide);
     await hide()
   },

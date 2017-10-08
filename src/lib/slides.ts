@@ -112,14 +112,14 @@ function hideGame() {
   return new Promise(resolve => anim.onfinish = resolve)
 }
 
-function showGame() {
+function showGame(skipAnimation = false) {
   const gameCanvas = game.view
-  gameCanvas.style.display = 'block';
+  gameCanvas.style.opacity = '1';
   const anim = hider.animate([
     {left: '-800px', offset: 0},
     {left: '-2400px', offset: 1}
   ], {
-    duration: 635, //milliseconds
+    duration: skipAnimation ? 0 : 635, //milliseconds
     easing: 'linear', //'linear', a bezier curve, etc.
     fill: 'both' //'backwards', 'both', 'none', 'auto'
   })
@@ -161,7 +161,7 @@ function loadGame() {
   gameCanvas.classList.add('game');
   gameCanvas.width = 800;
   gameCanvas.height = 600;
-  gameCanvas.style.display = 'none';
+  gameCanvas.style.opacity = '0';
   gameCanvas.style.position = 'absolute';
   gameCanvas.style.top = '0';
   gameCanvas.style.left = '0';

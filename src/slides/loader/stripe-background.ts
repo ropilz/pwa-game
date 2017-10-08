@@ -11,7 +11,10 @@ const stripeId = [
 let stripes = []
 
 export function show() {
-  return animateInAll();
+  return new Promise(async resolve => {
+    await animateInAll();
+    setTimeout(resolve, 1);
+  })
 }
 
 export function hide() {

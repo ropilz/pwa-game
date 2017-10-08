@@ -56,6 +56,14 @@ export class Game {
     this.bunny.disableJump();
   }
 
+  enableJump () {
+    this.bunny.enableJump();
+  }
+
+  forceJump () {
+    this.bunny.jump(true);
+  }
+
   step () {
     if (!this.loop._paused) { return }
     this.loop.step();

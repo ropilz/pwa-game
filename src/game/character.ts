@@ -97,9 +97,10 @@ export class Character {
     })
   }
 
-  jump () {
-    if (this.jumping || this.jumpDisabled) { return; }
-    this.jumping = true;
-    this.ySpeed = conf.jumpSpeed;
+  jump (force = false) {
+    if ((force && !this.jumping) || (!this.jumping && !this.jumpDisabled)) {
+      this.jumping = true;
+      this.ySpeed = conf.jumpSpeed;
+    }
   }
 }

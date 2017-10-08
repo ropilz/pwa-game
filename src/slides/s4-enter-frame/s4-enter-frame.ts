@@ -128,7 +128,6 @@ function animateSignal() {
     // anim.onfinish = resolve
     setTimeout(resolve, 600)
   })
-
 }
 
 function animateSignal2(loop = false) {

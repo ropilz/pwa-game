@@ -1,9 +1,10 @@
 import {initBackground} from '../slides/loader/stripe-background'
 import {preloadImages} from './utils';
 import {steps1} from '../slides/s1-title/s1-title';
-import {steps2} from '../slides/s2-game-intro/s2-game-intro'
+import {steps2} from '../slides/s2-game-intro/s2-game-intro';
 import {steps3} from '../slides/s3-tools/s3-tools';
-import {steps4} from '../slides/s4-enter-frame/s4-enter-frame'
+import {steps4} from '../slides/s4-enter-frame/s4-enter-frame';
+import {steps5} from '../slides/s5-keyboard-event/s5-keyboard-event';
 
 import {Game} from '../game/game';
 
@@ -12,6 +13,7 @@ const steps = [
   ...steps2,
   ...steps3,
   ...steps4,
+  ...steps5,
 ]
 
 function updateScale () {
@@ -189,7 +191,6 @@ export async function install () {
   await assetsHandler;
   const wrapper = document.querySelector('.wrapper')
   const loader = document.getElementsByClassName('loading')[0]
-  debugger;
   wrapper.removeChild(loader);
   initBackground(wrapper)
   createHelpers();

@@ -1,4 +1,6 @@
 import {initBackground} from '../slides/loader/stripe-background'
+import {preloadImages} from './utils';
+import {steps1} from '../slides/s1-title/s1-title';
 import {steps2} from '../slides/s2-game-intro/s2-game-intro'
 import {steps3} from '../slides/s3-tools/s3-tools';
 import {steps4} from '../slides/s4-enter-frame/s4-enter-frame'
@@ -6,6 +8,7 @@ import {steps4} from '../slides/s4-enter-frame/s4-enter-frame'
 import {Game} from '../game/game';
 
 const steps = [
+  ...steps1,
   ...steps2,
   ...steps3,
   ...steps4,
@@ -168,12 +171,28 @@ function setSubtitle(text: string) {
 
 export async function install () {
   window.addEventListener('resize', updateScale);
-  const wrapper = document.querySelector('.wrapper')
-  initBackground(wrapper)
   updateScale();
-  createHelpers();
+  const assetsHandler = preloadImages([
+    './assets/aastudio-logo.png',
+    './assets/chrome-logo.svg',
+    './assets/cog.png',
+    './assets/footer.jpg',
+    './assets/glitch-logo.svg',
+    './assets/piskelapp-logo.png',
+    './assets/pixijs-logo.png',
+    './assets/pwa-logo.png',
+    './assets/rxjs-logo.png',
+    './assets/title.jpg',
+  ]);
   game = new Game();
   await game.loadAssets();
+  await assetsHandler;
+  const wrapper = document.querySelector('.wrapper')
+  const loader = document.getElementsByClassName('loading')[0]
+  debugger;
+  wrapper.removeChild(loader);
+  initBackground(wrapper)
+  createHelpers();
   loadGame();
   let step = 0;
   const data = {
@@ -181,19 +200,8 @@ export async function install () {
     makeGameFullScreen, resetGamePosition, moveGameTo, showTool, hideTool
   }
   let blocked = false;
-  document.addEventListener('keydown', async ({keyCode}) => {
-    if (keyCode === 39) {
-      if (blocked) { return }
-      blocked = true;
-      if (step < steps.length) {
-        await steps[step](data);
-        blocked = false;
-        step += 1;
-      }
-    }
-  });
-  document.body.addEventListener('click', async () => {
-    // document.body.webkitRequestFullscreen();
+
+  async function runStep() {
     if (blocked) { return }
     blocked = true;
     if (step < steps.length) {
@@ -201,6 +209,16 @@ export async function install () {
       blocked = false;
       step += 1;
     }
+  }
+  runStep();
+  document.addEventListener('keydown', async ({keyCode}) => {
+    if (keyCode === 39) {
+      runStep();
+    }
+  });
+  document.body.addEventListener('click', async () => {
+    // document.body.webkitRequestFullscreen();
+    runStep();
   })
 
 }

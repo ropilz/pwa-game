@@ -114,7 +114,7 @@ function hideGame() {
 
 function showGame(skipAnimation = false) {
   const gameCanvas = game.view
-  gameCanvas.style.opacity = '1';
+  gameCanvas.style.display = 'block';
   const anim = hider.animate([
     {left: '-800px', offset: 0},
     {left: '-2400px', offset: 1}
@@ -161,7 +161,7 @@ function loadGame() {
   gameCanvas.classList.add('game');
   gameCanvas.width = 800;
   gameCanvas.height = 600;
-  gameCanvas.style.opacity = '0';
+  gameCanvas.style.display = 'none';
   gameCanvas.style.position = 'absolute';
   gameCanvas.style.top = '0';
   gameCanvas.style.left = '0';

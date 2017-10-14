@@ -62,7 +62,7 @@ function createEventSignal(wrapper) {
   eventDown.classList.add('event-pulse')
   eventDown.style.top = '312px';
   wrapper.appendChild(eventDown);
-  createLabel(24, 315, 'Presionar', wrapper);
+  createLabel(24, 315, 'keydown', wrapper);
 
   for (let i = 1; i <= 4; i += 1) {
     let eventChild = document.createElement('div')
@@ -78,7 +78,7 @@ function createEventSignal(wrapper) {
   eventUp.classList.add('event-pulse')
   eventUp.style.top = '397px';
   wrapper.appendChild(eventUp);
-  createLabel(37, 405, 'Soltar', wrapper);
+  createLabel(37, 405, 'keyup', wrapper);
 
   for (let i = 1; i <= 4; i += 1) {
     let eventChild = document.createElement('div')
@@ -125,7 +125,7 @@ function createEventSignal(wrapper) {
   createLabel(584, 465, 'Juego', wrapper);
 }
 
-function animateSignal(up = false) {
+function animateSignal(up = false, delay = false) {
   const eventChilds = up ? eventUpChilds : eventDownChilds;
   const transmition:any = up ? transmitionUp : transmitionDown;
   for (let i = 0; i < eventChilds.length; i += 1) {
@@ -153,7 +153,7 @@ function animateSignal(up = false) {
   })
   return new Promise(resolve => {
     // anim.onfinish = resolve
-    setTimeout(resolve, 600)
+    setTimeout(resolve, delay ? 1000 : 600)
   })
 }
 
@@ -205,6 +205,7 @@ function stopWorker() {
 
 export const steps5 = [
   async (data: SlideData) => {
+    data.game.hideObstacles();
     data.hideTool();
     data.setSubtitle('Eventos de teclado');
     createActionText(data.wrapper);
@@ -241,11 +242,11 @@ export const steps5 = [
     actionTitle.textContent = 'El evento se ignora';
   },
   async (data: SlideData) => {
-    await animateSignal(true)
-    await animateSignal2()
+    actionTitle.textContent = 'El usuario suelta el botón';
   },
   async (data: SlideData) => {
-    actionTitle.textContent = 'El usuario soltó el botón';
+    await animateSignal(true)
+    await animateSignal2()
   },
   async (data: SlideData) => {
     await animateSignal();
@@ -264,16 +265,16 @@ export const steps5 = [
         if (pressed) {
           if (blockedDown) { return; }
           blockedDown = true;
-          await animateSignal();
+          await animateSignal(false, true);
           blockedDown = false;
         } else {
           pressed = true;
           blockedDown = true;
           await animateSignal();
-          blockedDown = false;
           await animateSignal2();
           await animateSignal3();
           data.game.forceJump();
+          blockedDown = false;
         }
       }
       keyUpHandler = async function ({keyCode}) {
@@ -302,7 +303,7 @@ export const steps5 = [
   },
   async (data: SlideData) => {
     data.hideGame();
-    data.showTool('./assets/glitch-logo.svg', '')
+    await data.showTool('./assets/glitch-logo.svg', 'https://glitch.com/edit/#!/runny')
   },
 
 

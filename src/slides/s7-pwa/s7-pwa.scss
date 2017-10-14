@@ -1,0 +1,20 @@
+.file-area {
+  position: absolute;
+  top: 204px;
+  left: 114px;
+  z-index: 990;
+  text-align: center;
+  opacity: 0;
+
+  > img {
+    width: 190px;
+  }
+
+  > pre {
+    text-align: center;
+    font-size: 20pt;
+  }
+}
+.file-area.right {
+  left: 431px;
+}

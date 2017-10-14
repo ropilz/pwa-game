@@ -5,7 +5,10 @@ import {steps2} from '../slides/s2-game-intro/s2-game-intro';
 import {steps3} from '../slides/s3-tools/s3-tools';
 import {steps4} from '../slides/s4-enter-frame/s4-enter-frame';
 import {steps5} from '../slides/s5-keyboard-event/s5-keyboard-event';
-import {steps8} from '../slides/s8-final-slides/s8-final-slides';
+import {steps6} from '../slides/s6-obstacles/s6-obstacles';
+import {steps7} from '../slides/s7-pwa/s7-pwa';
+import {steps8} from '../slides/s8-presentation/s8-presentation';
+import {steps9} from '../slides/s9-final-slides/s9-final-slides';
 
 import {Game} from '../game/game';
 
@@ -15,7 +18,10 @@ const steps = [
   ...steps3,
   ...steps4,
   ...steps5,
+  ...steps6,
+  ...steps7,
   ...steps8,
+  ...steps9,
 ]
 
 function updateScale () {
@@ -53,7 +59,7 @@ function createHelpers() {
   hider.classList.add('game-hide')
   toolLogo = new Image();
   toolLogo.classList.add('use-tool-logo');
-  toolUrl = document.createElement('a');
+  toolUrl = document.createElement('span');
   toolUrl.classList.add('use-tool-url');
   wrapper.appendChild(toolUrl);
   wrapper.appendChild(toolLogo);
@@ -79,7 +85,7 @@ function showTool(imageUrl: string, url: string) {
   ])
 }
 
-function hideTool() {
+function hideTool(silent: boolean) {
   const animLogo = toolLogo.animate([
     {opacity: 1, marginLeft: '0', offset: 0},
     {opacity: 0, marginLeft: '-120px', offset: 1},
@@ -91,16 +97,17 @@ function hideTool() {
   return Promise.all([
     new Promise(resolve => animLogo.onfinish = resolve),
     new Promise(resolve => animUrl.onfinish = resolve),
-    showGame()
+    silent ? new Promise(resolve => resolve()) : showGame()
   ])
 }
 
 function removeGame() {
   const wrapper = document.querySelector('.wrapper')
   wrapper.removeChild(game.view);
+  wrapper.removeChild(hider);
 }
 
-function hideGame() {
+async function hideGame() {
   const anim = hider.animate([
     {left: '800px', offset: 0},
     {left: '-800px', offset: 1}
@@ -109,12 +116,14 @@ function hideGame() {
     easing: 'linear', //'linear', a bezier curve, etc.
     fill: 'both' //'backwards', 'both', 'none', 'auto'
   })
-  return new Promise(resolve => anim.onfinish = resolve)
+  await new Promise(resolve => anim.onfinish = resolve)
+  const gameCanvas = game.view
+  gameCanvas.style.marginTop = '10000px';
 }
 
-function showGame(skipAnimation = false) {
+async function showGame(skipAnimation = false) {
   const gameCanvas = game.view
-  gameCanvas.style.display = 'block';
+  gameCanvas.style.marginTop = '0';
   const anim = hider.animate([
     {left: '-800px', offset: 0},
     {left: '-2400px', offset: 1}
@@ -161,7 +170,7 @@ function loadGame() {
   gameCanvas.classList.add('game');
   gameCanvas.width = 800;
   gameCanvas.height = 600;
-  gameCanvas.style.display = 'none';
+  gameCanvas.style.marginTop = '1000px';
   gameCanvas.style.position = 'absolute';
   gameCanvas.style.top = '0';
   gameCanvas.style.left = '0';
@@ -194,6 +203,20 @@ export async function install () {
     './assets/pwa-logo.png',
     './assets/rxjs-logo.png',
     './assets/title.jpg',
+    './assets/carrot.png',
+    './assets/json-file.svg',
+    './assets/javascript.svg',
+    './assets/ninten.png',
+    './assets/ness.jpg',
+    './assets/Kirby_Sprite.png',
+    './assets/ALttP_Bunny_Link.png',
+    './assets/gdg_cochabamba.png',
+    './assets/github.png',
+    './assets/twitter.png',
+    './assets/abv.png',
+    './assets/js.png',
+    './assets/css3.png',
+    './assets/html.png',
   ]);
   game = new Game();
   await game.loadAssets();

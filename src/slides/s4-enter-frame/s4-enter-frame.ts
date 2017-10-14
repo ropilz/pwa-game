@@ -283,7 +283,7 @@ export const steps4 = [
   },
   async (data: SlideData) => {
     data.hideGame();
-    data.showTool('./assets/glitch-logo.svg', '')
+    await data.showTool('./assets/glitch-logo.svg', 'https://glitch.com/edit/#!/runny')
   },
 
 

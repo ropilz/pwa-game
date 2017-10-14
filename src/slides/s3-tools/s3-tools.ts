@@ -101,6 +101,9 @@ export const steps3 = [
   },
   async (data: SlideData) => {
     hideTools(data.wrapper);
+    await data.showTool('./assets/piskelapp-logo.png', 'https://goo.gl/yXz6U1')
+  },
+  async (data: SlideData) => {
     await data.showTool('./assets/glitch-logo.svg', 'https://glitch.com/edit/#!/runny')
   }
 

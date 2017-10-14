@@ -86,7 +86,7 @@ export const steps2 = [
 
   // Show obstacles
   async (data: SlideData) => {
-    handwrite.innerHTML = 'Objetos';
+    handwrite.innerHTML = 'Zanahorias';
     data.game.highlightObstacles();
   },
   // Show PWA

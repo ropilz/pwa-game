@@ -7,7 +7,7 @@ export type SlideData = {
   hideGame(): void,
   removeGame(): void,
   showTool(imageUrl: string, ur: string): void,
-  hideTool(): void,
+  hideTool(silent?: boolean): void,
   game: Game,
   wrapper: Element,
   makeGameFullScreen(): void,

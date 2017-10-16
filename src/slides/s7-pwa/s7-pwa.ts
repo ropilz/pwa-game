@@ -27,7 +27,7 @@ function createFiles(wrapper: Element) {
   let jsIcon = new Image();
   jsIcon.src = './assets/javascript.svg';
   let jsLabel = document.createElement('pre');
-  jsLabel.textContent = 'service-worker.json';
+  jsLabel.textContent = 'service-worker.js';
   jsArea.appendChild(jsIcon);
   jsArea.appendChild(jsLabel);
   wrapper.appendChild(jsonArea);

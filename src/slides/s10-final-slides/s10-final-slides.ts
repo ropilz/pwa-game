@@ -3,7 +3,7 @@ import {SlideData} from '../slide-data';
 
 let content: HTMLElement;
 
-export const steps9 = [
+export const steps10 = [
   async (data: SlideData) => {
     const handle = show();
     await handle;
@@ -17,16 +17,4 @@ export const steps9 = [
     data.wrapper.appendChild(content);
     await hide();
   },
-  async (data: SlideData) => {
-    const handle = show();
-    await handle;
-    data.wrapper.removeChild(content);
-    content = document.createElement('div');
-    content.classList.add('s1-title');
-    content.innerHTML = `
-      <img class="background" src="./assets/image4.jpg">
-    `;
-    data.wrapper.appendChild(content);
-    await hide();
-  }
 ]

@@ -18,29 +18,20 @@ export const steps8 = [
   // ShowElem fullscreen game
   async (data: SlideData) => {
     data.hideGame();
-    data.setTitle('Yo')
+    data.setTitle('Denis')
     data.setSubtitle('')
     content = document.createElement('div');
     content.classList.add('presentation');
     content.innerHTML = `
       <div class="me">
-        <img class="me-icon" src="./assets/ninten.png">
-        <h2 class="me-name">Rodrigo Claros</h2>
+        <img class="me-icon" src="./assets/denis.png">
+        <h2 class="me-name">Denis Claros</h2>
       </div>
-      <img class="ness-icon" src="./assets/ness.jpg">
-      <img class="kirby-icon" src="./assets/Kirby_Sprite.png">
-      <img class="link-icon" src="./assets/ALttP_Bunny_Link.png">
+      <img class="book-icon" src="./assets/book.gif">
+      <img class="magic-icon" src="./assets/magic.png">
+      <img class="piano-icon" src="./assets/piano.png">
 
-      <img class="js-icon" src="./assets/js.png">
-      <img class="css-icon" src="./assets/css3.png">
-      <img class="html-icon" src="./assets/html.png">
-
-      <img class="gdg-icon" src="./assets/gdg_cochabamba.png">
-      <img class="abv-icon" src="./assets/abv.png">
-      <img class="gh-icon" src="./assets/github.png">
-      <span class="gh-label">@ropilz</span>
-      <img class="tw-icon" src="./assets/twitter.png">
-      <span class="tw-label">@ropilz</span>
+      <img class="aiesec-icon" src="./assets/aiesec.png">
     `;
     data.wrapper.appendChild(content);
     await data.hideTool(true);
@@ -52,31 +43,14 @@ export const steps8 = [
     ])
   },
   async (data: SlideData) => {
-    await showElem(document.getElementsByClassName('ness-icon')[0])
-    await showElem(document.getElementsByClassName('kirby-icon')[0])
-    await showElem(document.getElementsByClassName('link-icon')[0])
+    await showElem(document.getElementsByClassName('book-icon')[0])
+    await showElem(document.getElementsByClassName('magic-icon')[0])
+    await showElem(document.getElementsByClassName('piano-icon')[0])
   },
   async (data: SlideData) => {
-    await showElem(document.getElementsByClassName('html-icon')[0])
-    await showElem(document.getElementsByClassName('css-icon')[0])
-    await showElem(document.getElementsByClassName('js-icon')[0])
+    await showElem(document.getElementsByClassName('aiesec-icon')[0])
   },
   async (data: SlideData) => {
-    await showElem(document.getElementsByClassName('abv-icon')[0])
+    wrapper.removeChild(content);
   },
-  async (data: SlideData) => {
-    await showElem(document.getElementsByClassName('gdg-icon')[0])
-  },
-  async (data: SlideData) => {
-    await Promise.all([
-      showElem(document.getElementsByClassName('gh-icon')[0]),
-      showElem(document.getElementsByClassName('gh-label')[0])
-    ])
-  },
-  async (data: SlideData) => {
-    await Promise.all([
-      showElem(document.getElementsByClassName('tw-icon')[0]),
-      showElem(document.getElementsByClassName('tw-label')[0])
-    ])
-  }
 ];

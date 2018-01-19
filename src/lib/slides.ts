@@ -8,7 +8,8 @@ import {steps5} from '../slides/s5-keyboard-event/s5-keyboard-event';
 import {steps6} from '../slides/s6-obstacles/s6-obstacles';
 import {steps7} from '../slides/s7-pwa/s7-pwa';
 import {steps8} from '../slides/s8-presentation/s8-presentation';
-import {steps9} from '../slides/s9-final-slides/s9-final-slides';
+import {steps9} from '../slides/s9-presentation/s9-presentation';
+import {steps10} from '../slides/s10-final-slides/s10-final-slides';
 
 import {Game} from '../game/game';
 
@@ -22,6 +23,7 @@ const steps = [
   ...steps7,
   ...steps8,
   ...steps9,
+  ...steps10,
 ]
 
 function updateScale () {
@@ -52,9 +54,6 @@ function createTitle() {
 
 function createHelpers() {
   const wrapper = document.querySelector('.wrapper')
-  footer = new Image();
-  footer.classList.add('footer');
-  footer.src = './assets/footer.jpg';
   hider = document.createElement('div')
   hider.classList.add('game-hide')
   toolLogo = new Image();
@@ -64,7 +63,6 @@ function createHelpers() {
   wrapper.appendChild(toolUrl);
   wrapper.appendChild(toolLogo);
   wrapper.appendChild(hider);
-  wrapper.appendChild(footer);
 }
 
 function showTool(imageUrl: string, url: string) {
@@ -208,6 +206,11 @@ export async function install () {
     './assets/javascript.svg',
     './assets/ninten.png',
     './assets/ness.jpg',
+    './assets/denis.png',
+    './assets/piano.png',
+    './assets/magic.png',
+    './assets/book.gif',
+    './assets/aiesec.png',
     './assets/Kirby_Sprite.png',
     './assets/ALttP_Bunny_Link.png',
     './assets/gdg_cochabamba.png',

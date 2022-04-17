@@ -2,6 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/js",
+    "sourceRoot": "./src",
     "baseUrl": "",
     "sourceMap": true,
     "declaration": false,

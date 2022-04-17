@@ -3,15 +3,15 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  context: __dirname + "/src",
+  context: __dirname + "/",
   entry: {
     app: [
-      "./main.ts",
-      "./main.scss"
+      "./src/main.ts",
+      "./src/main.scss"
     ]
   },
   devtool: 'source-map',
@@ -32,22 +32,21 @@ module.exports = {
       },
       { // scss
         test: /\.(scss)$/,
-        use: ExtractTextPlugin.extract(['css-loader', 'postcss-loader', 'sass-loader', 'import-glob-loader'])
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader', 'import-glob-loader']
       }
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(['assets', 'css'], {}),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin ({
       inject: true,
-      template: './index.html'
+      template: './src/index.html'
     }),
-    new ExtractTextPlugin({
-      filename: '[name].bundle.css',
-      allChunks: true,
-    }),
-    new CopyWebpackPlugin([
-      {from: './assets', to: './assets'}
-    ])
+    new MiniCssExtractPlugin(),
+    new CopyWebpackPlugin({patterns:
+      [
+        {from: './src/assets', to: './src/assets'}
+      ]
+    })
   ]
 };

@@ -195,7 +195,6 @@ export async function install () {
     './assets/footer.jpg',
     './assets/glitch-logo.svg',
     './assets/image3.jpg',
-    './assets/image4.jpg',
     './assets/piskelapp-logo.png',
     './assets/pixijs-logo.png',
     './assets/pwa-logo.png',

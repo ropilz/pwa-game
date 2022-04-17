@@ -51,6 +51,6 @@ export const steps8 = [
     await showElem(document.getElementsByClassName('aiesec-icon')[0])
   },
   async (data: SlideData) => {
-    wrapper.removeChild(content);
+    data.wrapper.removeChild(content);
   },
 ];
